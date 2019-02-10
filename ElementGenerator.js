@@ -2,7 +2,8 @@
 import React from 'react';
 import { Platform, View, Text, Image, ImageBackground, TouchableOpacity,StyleSheet,FlatList } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
-import BlinkingIcon from './subcomponents/BlinkingIcon';
+import BlinkingIcon from './BlinkingIcon';
+import TouchableOpacityWithIcon2Rows from "./TouchableOpacityWithIcon2Rows";
 
 /**
  * Generate a simple TextFiled with Styles and random Content
@@ -44,37 +45,18 @@ export function genBackgroundImage(styles,content){
  * @param content
  * @returns {*}
  */
-export function genTouchableOpacityListItem(shortPressCallback,params,index,iconName){
-    let opacityKey = Math.random().toString(36).substring(7);
-    
-    if(index % 2){
-        return (
-            <TouchableOpacity style={{ backgroundColor: '#ccc',padding:5, width:"100%"}} key={opacityKey} onPress={ () => { shortPressCallback(params) } } >
-                <View style={{flexDirection: 'row', alignItems: 'center', marginLeft:5,paddingTop:3}}>
-                    <Icon name={iconName} size={30}/>
-                    <View style={{marginLeft:5}}>
-                        <Text style={{fontSize: 16, fontWeight: 'bold'}} >{params.title}</Text>
-                        <Text style={{fontSize: 12}} >{validDate}</Text>
-                        <BlinkingIcon style={{ alignSelf:'right' }} />
-                    </View>
-                </View>
-            </TouchableOpacity>
-        );
-    }else{
-        return (
-            <TouchableOpacity style={{ backgroundColor: '#fff',padding:5, width:"100%"}} key={opacityKey} onPress={ () => { shortPressCallback(params) } } >
-                <View style={{flexDirection: 'row', alignItems: 'center', marginLeft:5,paddingTop:3}}>
-                    <Icon name={iconName} size={30}/>
-                    <View style={{marginLeft:5}}>
-                        <Text style={{fontSize: 16, fontWeight: 'bold'}} >{params.title}</Text>
-                        <Text style={{fontSize: 12}} >{validDate}</Text>
-                        <BlinkingIcon style={{ alignSelf:'right' }} />
-                    </View>
-                </View>
-            </TouchableOpacity>
-        );
-    }
+export function genTouchableOpacityListItem(shortPressCallback,params,index,iconName,blinkingIcon = null){
+
+    let validDate = "von - bis";
+
+    return (
+        <TouchableOpacityWithIcon2Rows
+            oddOrEven={index} iconName={iconName} shortPressCallBackFunc={shortPressCallback} callBackParams={params}
+            firstRowContent={params.title} secondRowContent={validDate}
+        />
+    )
 }
+
 
 /**
  *
