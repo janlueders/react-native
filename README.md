@@ -5,7 +5,7 @@ Packge which could be used to generate all Kind of React-Native Components and m
 These is an Example how to use the ElementGenerator in functions or in a render function itself.
 
 ```Javascript
-import { genTouchableOpacityListItem} from './ElementGenerator';
+import { genTouchableOpacityListItem } from './ElementGenerator';
 
 render() {
     return (
