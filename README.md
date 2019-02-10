@@ -1,5 +1,5 @@
-# react-native
-All Kinds of React-Native Components
+# react-native-element-generator
+Packge which could be used to generate all Kind of React-Native Components and may some usefull Subcomponents like LoadiingModals, Blinking Icons or Text. 
 
 # Usage
 These is an Example how to use the ElementGenerator in functions or in a render function itself.
